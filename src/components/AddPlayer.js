@@ -1,41 +1,38 @@
 import React from "react";
-
+import Crown from "./Crown";
 class AddPlayer extends React.Component {
-    state = {
-        value: ''
-    }
+  state = {
+    value: "",
+  };
 
-    stateChange = (e) =>{
-        this.setState({
-            value: e.target.value
-        })
-    }
+  stateChange = (e) => {
+    this.setState({
+      value: e.target.value,
+    });
+  };
 
-    handleSubmit = (e) =>{
-        e.preventDefault()
-        this.props.addPlayer(this.state.value)
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addPlayer(this.state.value);
 
-        this.setState({
-            value: ''
-        })
-    }
-    
-    render(){
-        return(
-            <form onSubmit={this.handleSubmit} >
-                <input 
-                    type="text"
-                    onChange={this.stateChange}
-                    value={this.state.value}
-                    placeholder='Add player name'
-                />
-                <input 
-                    type="submit"
-                    value='Add player'
-                  />
-            </form>
-        )
-    }
+    this.setState({
+      value: "",
+    });
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          type="text"
+          onChange={this.stateChange}
+          value={this.state.value}
+          placeholder="Add player name"
+        />
+        <input type="submit" value="Add player" />
+      </form>
+    );
+  }
 }
 
-export default AddPlayer
+export default AddPlayer;
