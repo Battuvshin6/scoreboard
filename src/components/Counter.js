@@ -27,4 +27,3 @@ Counter.protoTypes = {
   changeScore: propTypes.func,
 };
 export default Counter;
--
