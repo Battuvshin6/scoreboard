@@ -3,7 +3,8 @@ import Player from "./components/Player";
 import Header from "./components/Header";
 import AddPlayer from "./components/AddPlayer";
 import "./App.css";
-
+import { Provider } from "./components/Context";
+import PLayerList from "./components/PlayerList";
 class App extends React.Component {
   state = {
     players: [
@@ -83,29 +84,25 @@ class App extends React.Component {
       ],
     });
   };
-
   render() {
     const highscore = this.getHighScore();
     return (
       <div className="scoreboard">
-        <Header
-          title="Scoreboard"
-          totalPlayers={this.state.players.length}
-          players={this.state.players}
-        />
-        {this.state.players.map((player, index) => (
-          <Player
-            name={player.name}
-            score={player.score}
-            key={player.id}
-            id={player.id}
-            index={index}
-            removePlayer={this.removePlayer}
-            changeScore={this.changeScore}
-            highscore={player.score === highscore}
-          />
-        ))}
-        <AddPlayer addPlayer={this.handleAddPlayer} />
+        <Provider
+          value={{
+            players: this.state.players,
+            action: {
+              handleAddPlayer: this.handleAddPlayer,
+              editName: this.editName,
+              removePlayer: this.removePlayer,
+              changeScore: this.changeScore,
+            },
+          }}
+        >
+          <Header />
+          <PLayerList highscore={highscore} />
+          <AddPlayer addPlayer={this.handleAddPlayer} />
+        </Provider>
       </div>
     );
   }

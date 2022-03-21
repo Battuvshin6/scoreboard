@@ -1,6 +1,7 @@
 import React from "react";
 import Counter from "./Counter";
 import Crown from "./Crown";
+import { Consumer } from "./Context";
 const Player = (props) => {
   return (
     <div className="player">

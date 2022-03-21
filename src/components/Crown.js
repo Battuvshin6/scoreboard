@@ -1,6 +1,6 @@
 import React from "react";
+
 const Crown = (props) => {
-  console.log(props.isHighScore);
   return (
     <svg
       className={props.isHighScore ? "is-high-score" : null}
@@ -18,5 +18,4 @@ const Crown = (props) => {
     </svg>
   );
 };
-
 export default Crown;
