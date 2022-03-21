@@ -2,7 +2,6 @@ import React from "react";
 import Stats from "./Stats";
 import Stopwatch from "./Stopwatch";
 import propTypes from "prop-types";
-import Crown from "./Crown";
 const Header = (props) => {
   return (
     <header>

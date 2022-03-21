@@ -1,6 +1,5 @@
 import React from "react";
 import Counter from "./Counter";
-import propTypes from "prop-types";
 import Crown from "./Crown";
 const Player = (props) => {
   return (
@@ -12,6 +11,7 @@ const Player = (props) => {
         >
           ✖
         </button>
+        <Crown isHighScore={props.highscore} />
         {props.name}
       </div>
       <Counter

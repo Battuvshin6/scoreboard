@@ -1,5 +1,4 @@
 import React from "react";
-import Crown from "./Crown";
 class AddPlayer extends React.Component {
   state = {
     value: "",

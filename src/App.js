@@ -3,7 +3,6 @@ import Player from "./components/Player";
 import Header from "./components/Header";
 import AddPlayer from "./components/AddPlayer";
 import "./App.css";
-import Crown from "./components/Crown";
 
 class App extends React.Component {
   state = {
@@ -54,10 +53,20 @@ class App extends React.Component {
     });
   };
 
+  getHighScore = () => {
+    const score = this.state.players.map((p) => p.score);
+    const highscore = Math.max(...score);
+    if (highscore > 0) {
+      return highscore;
+    } else {
+      return null;
+    }
+  };
+
   removePlayer = (paraID) => {
     this.setState((prevState) => {
       return {
-        players: prevState.players.filter((p) => p.id != paraID),
+        players: prevState.players.filter((p) => p.id !== paraID),
       };
     });
   };
@@ -76,6 +85,7 @@ class App extends React.Component {
   };
 
   render() {
+    const highscore = this.getHighScore();
     return (
       <div className="scoreboard">
         <Header
@@ -92,6 +102,7 @@ class App extends React.Component {
             index={index}
             removePlayer={this.removePlayer}
             changeScore={this.changeScore}
+            highscore={player.score === highscore}
           />
         ))}
         <AddPlayer addPlayer={this.handleAddPlayer} />
