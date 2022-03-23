@@ -1,10 +1,9 @@
 import React from "react";
-
+import { Consumer } from "./Context";
 class AddPlayer extends React.Component {
   state = {
     value: "",
   };
-
   stateChange = (e) => {
     this.setState({
       value: e.target.value,
