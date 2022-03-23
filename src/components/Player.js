@@ -15,6 +15,7 @@ const Player = (props) => {
         <Crown isHighScore={props.highscore} />
         {props.name}
       </div>
+
       <Counter
         index={props.index}
         score={props.score}
@@ -23,5 +24,4 @@ const Player = (props) => {
     </div>
   );
 };
-
 export default Player;

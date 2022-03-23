@@ -1,19 +1,19 @@
 import React from "react";
 import Player from "./Player";
 import { Consumer } from "./Context";
-import { checkPropTypes } from "prop-types";
 
 const PlayerList = (props) => {
   return (
     <Consumer>
-      {(value) => {
+      {({ actions, players, highscore }) => {
         return (
           <>
-            {value.players.map((player, index) => (
+            {players.map((player, index) => (
               <Player
                 {...player}
                 key={player.id}
                 index={index}
+                editName={props.editName}
                 highscore={player.score === props.highscore}
               />
             ))}
