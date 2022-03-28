@@ -1,37 +1,32 @@
-import React from "react";
-import { Consumer } from "./Context";
-class AddPlayer extends React.Component {
-  state = {
-    value: "",
-  };
+import React, { useState } from "react";
+const AddPlayer = () => {
+  const [state, setState] = useState(0);
+  const [handleSubmit, stateChange] = useState(1);
   stateChange = (e) => {
-    this.setState({
+    setState({
       value: e.target.value,
     });
   };
-
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addPlayer(this.state.value);
+    this.props.addPlayer(state.value);
 
-    this.setState({
+    setState({
       value: "",
     });
   };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          onChange={this.stateChange}
-          value={this.state.value}
-          placeholder="Add player name"
-        />
-        <input type="submit" value="Add player" />
-      </form>
-    );
-  }
-}
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        onChange={stateChange}
+        value={state.value}
+        placeholder="Add player name"
+      />
+      <input type="submit" value="Add player" />
+    </form>
+  );
+};
 
 export default AddPlayer;
